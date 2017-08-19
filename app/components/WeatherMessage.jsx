@@ -13,7 +13,7 @@ var React = require('react');
 var WeatherMessage = ({temp, location}) => { //instead of 'props' in argument
   //var {temp, location} = props; //can destructure in the argument
   return (
-    <h3>It is {temp} in {location}</h3>
+    <h3 className="text-center">It is {temp} in {location}</h3>
   );
 }
 
