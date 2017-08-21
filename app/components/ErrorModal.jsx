@@ -3,7 +3,7 @@ var React = require('react');
 var ErrorModal = React.createClass({
   //'componentDidMount' renders ErrorModal to the DOM when ErrorModal is called from Weather.jsx from 'renderError' method
   getDefaultProps: function () {
-    return { //'{' vs. '('
+    return { //'{' vs. '('?
       title: 'Error'
     };
   },
