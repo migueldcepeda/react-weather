@@ -15,9 +15,11 @@ var Weather = React.createClass({
   handleSearch: function (location) { //naming convention onSearch >> handleSearch
     var that = this;
 
-    this.setState({
+    this.setState({ //setting default states so properties don't linger after they are changed below (in promise)
       isLoading: true,
-      errorMessage: undefined
+      errorMessage: undefined,
+      location: undefined,
+      temp: undefined
     });
     openWeatherMap.getTemp(location).then(function (temp) {
       that.setState({
@@ -36,6 +38,23 @@ var Weather = React.createClass({
     //   location: location,
     //   temp: 23
     // })
+  },
+  componentDidMount: function () { //fires once component has been successfully mounted into the browser
+    var location = this.props.location.query.location;
+
+    if (location && location.length > 0) {
+      this.handleSearch(location);
+      window.location.hash = '#/';
+    }
+  },
+  componentWillReceiveProps: function (newProps) { //captures changes to props; parent can update a child's props, React Router parent of Weather.jsx
+    var location = newProps.location.query.location;
+
+    if (location && location.length > 0) {
+      this.handleSearch(location);
+      window.location.hash = '#/';
+    }
+
   },
   render: function () {
     var {isLoading, temp, location, errorMessage} = this.state;
