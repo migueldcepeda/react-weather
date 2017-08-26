@@ -13,11 +13,11 @@ module.exports = {
       } else {
         return res.data.main.temp;
       }
-    // }, function (res) { // original error case
-    //   throw new Error(res.data.message);
-    // });
-    }, function (err) {
-      throw new Error('Unable to fetch weather for that location.');
+    }, function (res) { // original error case
+      throw new Error(res.data.message);
     });
+    // }, function (err) {
+    //   throw new Error('Unable to fetch weather for that location.');
+    // });
   }
 }

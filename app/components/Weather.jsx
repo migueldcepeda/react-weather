@@ -39,7 +39,7 @@ var Weather = React.createClass({
     //   temp: 23
     // })
   },
-  componentDidMount: function () { //fires once component has been successfully mounted into the browser
+  componentDidMount: function () { //fires once component has been successfully mounted into the browser; needed for links and nav form to work
     var location = this.props.location.query.location;
 
     if (location && location.length > 0) {
@@ -47,7 +47,7 @@ var Weather = React.createClass({
       window.location.hash = '#/';
     }
   },
-  componentWillReceiveProps: function (newProps) { //captures changes to props; parent can update a child's props, React Router parent of Weather.jsx
+  componentWillReceiveProps: function (newProps) { //captures changes to props; parent can update a child's props, React Router parent of Weather.jsx; component doesn't know how to update when URL is changed
     var location = newProps.location.query.location;
 
     if (location && location.length > 0) {
